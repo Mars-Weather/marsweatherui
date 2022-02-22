@@ -12,8 +12,8 @@ function Header() {
             <a><span>7 days</span></a>
           </NavMenu>
           <RightMenu>
-              <LeftButton><span>F</span></LeftButton>
-              <RightButton><span>C</span></RightButton>
+              <LeftButton><span>° F</span></LeftButton>
+              <RightButton><span>° C</span></RightButton>
           </RightMenu>
       </Nav>
     );
