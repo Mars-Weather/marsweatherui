@@ -12,8 +12,8 @@ function Header() {
             <a><span>7 days</span></a>
           </NavMenu>
           <RightMenu>
-              <LeftButton>F</LeftButton>
-              <RightButton>C</RightButton>
+              <LeftButton><span>F</span></LeftButton>
+              <RightButton><span>C</span></RightButton>
           </RightMenu>
       </Nav>
     );
@@ -90,10 +90,13 @@ const RightMenu = styled.div`
 const LeftButton = styled.div`
   color: #ebe8e1;
   border-style: solid;
-  border-color: white; 
+  border-color: #ebe8e1; 
   margin-right: 10px; 
   width: 36px;
   height: 36px;
   border-radius: 18px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
 `
 const RightButton = styled(LeftButton)``
