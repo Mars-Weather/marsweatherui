@@ -3,31 +3,31 @@ import styled from 'styled-components';
 
 function Header() {
     return (
-      <Nav>
-          {/*image source: https://freesvg.org/mars-planet*/}
-          <a><img src="/images/mars-logo.png" alt=""/></a>
-          <a>Mars-Weather</a>
-          <NavMenu>
-            <a><span>Today</span></a>
-            <a><span>7 days</span></a>
-          </NavMenu>
-          <RightMenu>
-              <LeftButton><span>° F</span></LeftButton>
-              <RightButton><span>° C</span></RightButton>
-          </RightMenu>
-      </Nav>
+        <Nav>
+            {/*image source: https://freesvg.org/mars-planet*/}
+            <a><img src="/images/mars-logo.png" alt=""/></a>
+            <a>Mars-Weather</a>
+            <NavMenu>
+                <a><span>Today</span></a>
+                <a><span>7 days</span></a>
+            </NavMenu>
+            <RightMenu>
+                <LeftButton><span>° F</span></LeftButton>
+                <RightButton><span>° C</span></RightButton>
+            </RightMenu>
+        </Nav>
     );
-  }
-  
-  export default Header;
+}
 
-  const Nav = styled.nav`
-    height: 80px; 
+export default Header;
+
+const Nav = styled.nav`
+    height: 70px; 
     background: #090b13;
     display: flex; 
     align-items: center; 
     padding: 0 36px; 
-    overflow-x: hidden; 
+    overflow: hidden; 
 
     a{
         color: #ebe8e1;
