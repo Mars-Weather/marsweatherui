@@ -1,24 +1,27 @@
-import react from 'react';
-import styled from 'styled-components';
+import react, { useState } from "react";
+
+import TemperatureMoreData from "./TemperatureMoreData";
+import PressureMoreData from "./PressureMoreData";
 
 function FrontPage() {
-    return (
-        <Container>
-            <Subcontainer>
-                <LeftColumn>
-                    <p>80 ° F</p>
-                    <p>761 PA</p>
-                </LeftColumn>
-                <CenterColumn>
-                    <p>Season: summer</p>
-                </CenterColumn>
-                <RightColumn>
-                    <Button>More data</Button>
-                </RightColumn>
-            </Subcontainer>
+   const [moreDataIsVisible, setMoreDataIsVisible] = useState("hidden");
 
-        </Container>
-    );
+   const show_hide_more_data = () => {
+      if (moreDataIsVisible === "hidden") {
+         setMoreDataIsVisible("visible");
+      } else {
+         setMoreDataIsVisible("hidden");
+      }
+   };
+
+   return (
+      <div>
+         <p>Hello</p>
+         <button onClick={() => show_hide_more_data()}>More Data</button>
+         <TemperatureMoreData moreDataIsVisible={moreDataIsVisible} />
+         <PressureMoreData moreDataIsVisible={moreDataIsVisible} />
+      </div>
+   );
 }
 
 export default FrontPage;
