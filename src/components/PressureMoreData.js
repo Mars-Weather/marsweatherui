@@ -1,9 +1,9 @@
 import react, { useState } from "react";
 import styled from "styled-components";
 
-function PressureMoreData({ moreDataIsVisible }) {
+function PressureMoreData() {
    return (
-      <MainDiv style={{ visibility: moreDataIsVisible }}>
+      <MainDiv>
          <div style={{ padding: "1rem" }}>1</div>
          <div style={{ padding: "1rem" }}>2</div>
          <BottomDiv>
@@ -17,9 +17,8 @@ function PressureMoreData({ moreDataIsVisible }) {
 export default PressureMoreData;
 
 const MainDiv = styled.div`
-   width: 15rem;
-   height: 15rem;
-   padding: 3rem;
+   width: 20rem;
+   height: 20rem;
 
    div {
       flex: 1;
