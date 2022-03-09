@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import TemperatureMoreData from "./TemperatureMoreData";
 import PressureMoreData from "./PressureMoreData";
+import WindMoreData from "./WindMoreData";
 
 function FrontPage() {
    const [moreDataIsVisible, setMoreDataIsVisible] = useState("hidden");
@@ -18,10 +19,13 @@ function FrontPage() {
    return (
       <Container>
          <HorizontalDiv>
+            <SolNumberDiv>
+               <p>SOL 259</p>
+            </SolNumberDiv>
             <TempDiv>
                <div>
                   {moreDataIsVisible === "hidden" ? (
-                     <p style={{ fontSize: "2rem", color: "orange" }}>80 ° F</p>
+                     <p className="general-information">80° F</p>
                   ) : (
                      <TemperatureMoreData />
                   )}
@@ -30,7 +34,7 @@ function FrontPage() {
             <PressureDiv>
                <div>
                   {moreDataIsVisible === "hidden" ? (
-                     <p style={{ fontSize: "2rem", color: "orange" }}>761 PA</p>
+                     <p className="general-information">761 PA</p>
                   ) : (
                      <PressureMoreData />
                   )}
@@ -39,7 +43,9 @@ function FrontPage() {
          </HorizontalDiv>
          <HorizontalDiv>
             <div style={{ flex: 8 }}>
-               <p style={{ fontSize: "2rem", color: "red" }}>Season: Summer</p>
+               <p style={{ fontSize: "2rem", color: "white", marginTop: 0 }}>
+                  Season: Summer
+               </p>
             </div>
             <ButtonDiv>
                <button onClick={() => show_hide_more_data()}>More Data</button>
@@ -48,15 +54,15 @@ function FrontPage() {
          <HorizontalDiv>
             <WindSircleDiv>
                <div>
-                  <p style={{ fontSize: "2rem", color: "orange" }}>
+                  <p style={{ fontSize: "5rem", color: "#CBCBCB" }}>
                      wind circle
                   </p>
                </div>
             </WindSircleDiv>
             <WindMoreInfoDiv>
-               <p style={{ fontSize: "2rem", color: "orange" }}>
-                  wind more data comp
-               </p>
+               <div>
+                  {moreDataIsVisible === "hidden" ? <></> : <WindMoreData />}
+               </div>
             </WindMoreInfoDiv>
          </HorizontalDiv>
       </Container>
@@ -66,7 +72,8 @@ function FrontPage() {
 export default FrontPage;
 
 const Container = styled.div`
-   min-height: calc(100vh - 70px);
+   /* min-height: calc(100vh - 80px); */ //was
+   min-height: calc(100vh - 84px); //now
    position: relative;
    overflow-x: hidden;
    padding: 0 calc(3.5vw + 5px);
@@ -91,11 +98,22 @@ const HorizontalDiv = styled.div`
    text-align: center;
    display: flex;
    flex-direction: column;
+   padding: 1rem;
+`;
+
+const SolNumberDiv = styled.div`
+   text-align: left;
+   padding-left: 2rem;
+
+   p {
+      font-size: 2.5rem;
+      color: white;
+      margin: 0;
+   }
 `;
 
 const ButtonDiv = styled.div`
    flex: 1;
-   border: 2px solid;
    display: flex;
    justify-content: center;
    align-items: center;
@@ -107,23 +125,34 @@ const ButtonDiv = styled.div`
 
 const TempDiv = styled.div`
    flex: 2;
-   border: 1px solid;
    display: flex;
-   justify-content: center;
+   justify-content: left;
    align-items: center;
+   padding-left: 2rem;
+
+   .general-information {
+      color: #cbcbcb;
+      font-size: 8rem;
+      padding-left: 1rem;
+   }
 `;
 
 const PressureDiv = styled.div`
    flex: 1;
-   border: 2px solid;
    display: flex;
-   justify-content: center;
+   justify-content: left;
    align-items: center;
+   padding-left: 2rem;
+
+   .general-information {
+      color: #cbcbcb;
+      font-size: 8rem;
+      padding-left: 1rem;
+   }
 `;
 
 const WindSircleDiv = styled.div`
-   flex: 1.5;
-   border: 2px solid;
+   flex: 1.7;
    display: flex;
    justify-content: center;
    align-items: center;
@@ -131,8 +160,8 @@ const WindSircleDiv = styled.div`
 
 const WindMoreInfoDiv = styled.div`
    flex: 1;
-   border: 2px solid;
    display: flex;
-   justify-content: center;
+   justify-content: right;
    align-items: center;
+   padding-right: 2rem;
 `;

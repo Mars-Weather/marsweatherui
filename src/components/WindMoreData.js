@@ -1,42 +1,42 @@
 import react, { useState } from "react";
 import styled from "styled-components";
 
-function PressureMoreData() {
+function WindMoreData() {
    return (
       <Container>
          <TopDiv>
             <div>
-               <Title>Pressure</Title>
+               <Title>Horizantal wind speed</Title>
             </div>
          </TopDiv>
          <CentralDiv>
             <div>
                <Title>AVG</Title>
-               <p> 761.006</p>
+               <p>4.35</p>
             </div>
          </CentralDiv>
          <BottomDiv>
             <div className="min-temp-div">
                <Title style={{ paddingBottom: "2rem" }}>MIN</Title>
-               <p>742.1484</p>
+               <p>0.156</p>
             </div>
             <div className="max-temp-div">
                <Title style={{ paddingBottom: "2rem" }}>MAX</Title>
-               <p>780.9887</p>
+               <p>17.617</p>
             </div>
          </BottomDiv>
       </Container>
    );
 }
 
-export default PressureMoreData;
+export default WindMoreData;
 
 const Container = styled.div`
-   width: 20rem;
+   width: 25rem;
    height: 20rem;
    display: flex;
    flex-direction: column;
-   padding-left: 1rem;
+   padding-right: 1rem;
 
    div {
       margin: 2px;
