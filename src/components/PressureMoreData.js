@@ -32,7 +32,7 @@ function PressureMoreData() {
 export default PressureMoreData;
 
 const Container = styled.div`
-   width: 20rem;
+   width: 22rem;
    height: 20rem;
    display: flex;
    flex-direction: column;
