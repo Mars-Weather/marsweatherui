@@ -21,7 +21,7 @@ function FrontPage() {
             <TempDiv>
                <div>
                   {moreDataIsVisible === "hidden" ? (
-                     <p>80 ° F</p>
+                     <p style={{ fontSize: "2rem", color: "orange" }}>80 ° F</p>
                   ) : (
                      <TemperatureMoreData />
                   )}
@@ -30,7 +30,7 @@ function FrontPage() {
             <PressureDiv>
                <div>
                   {moreDataIsVisible === "hidden" ? (
-                     <p>761 PA</p>
+                     <p style={{ fontSize: "2rem", color: "orange" }}>761 PA</p>
                   ) : (
                      <PressureMoreData />
                   )}
@@ -48,14 +48,17 @@ function FrontPage() {
          <HorizontalDiv>
             <WindSircleDiv>
                <div>
-                  <p>wind circle</p>
+                  <p style={{ fontSize: "2rem", color: "orange" }}>
+                     wind circle
+                  </p>
                </div>
             </WindSircleDiv>
             <WindMoreInfoDiv>
-               <p>wind more data comp</p>
+               <p style={{ fontSize: "2rem", color: "orange" }}>
+                  wind more data comp
+               </p>
             </WindMoreInfoDiv>
          </HorizontalDiv>
-         {/*<PressureMoreData moreDataIsVisible={moreDataIsVisible} /> */}
       </Container>
    );
 }

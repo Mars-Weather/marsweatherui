@@ -1,9 +1,9 @@
 import react, { useState } from "react";
 import styled from "styled-components";
 
-function TemperatureMoreData({ moreDataIsVisible }) {
+function TemperatureMoreData() {
    return (
-      <MainDiv style={{ visibility: moreDataIsVisible }}>
+      <MainDiv>
          <div style={{ padding: "1rem" }}>1</div>
          <CentralDiv>
             <div>2</div>
@@ -18,8 +18,7 @@ export default TemperatureMoreData;
 
 const MainDiv = styled.div`
    width: 15rem;
-   height: 25rem;
-   padding: 3rem;
+   height: 20rem;
 
    div {
       flex: 1;
