@@ -6,13 +6,13 @@ import PressureMoreData from "./PressureMoreData";
 import WindMoreData from "./WindMoreData";
 
 function FrontPage() {
-   const [moreDataIsVisible, setMoreDataIsVisible] = useState("hidden");
+   const [moreDataIsVisible, setMoreDataIsVisible] = useState(false);
 
    const show_hide_more_data = () => {
-      if (moreDataIsVisible === "hidden") {
-         setMoreDataIsVisible("visible");
+      if (moreDataIsVisible) {
+         setMoreDataIsVisible(false);
       } else {
-         setMoreDataIsVisible("hidden");
+         setMoreDataIsVisible(true);
       }
    };
 
@@ -24,19 +24,19 @@ function FrontPage() {
             </SolNumberDiv>
             <TempDiv>
                <div>
-                  {moreDataIsVisible === "hidden" ? (
-                     <p className="general-information">80° F</p>
-                  ) : (
+                  {moreDataIsVisible ? (
                      <TemperatureMoreData />
+                  ) : (
+                     <p className="general-information">80° F</p>
                   )}
                </div>
             </TempDiv>
             <PressureDiv>
                <div>
-                  {moreDataIsVisible === "hidden" ? (
-                     <p className="general-information">761 PA</p>
-                  ) : (
+                  {moreDataIsVisible ? (
                      <PressureMoreData />
+                  ) : (
+                     <p className="general-information">761 PA</p>
                   )}
                </div>
             </PressureDiv>
@@ -60,9 +60,7 @@ function FrontPage() {
                </div>
             </WindSircleDiv>
             <WindMoreInfoDiv>
-               <div>
-                  {moreDataIsVisible === "hidden" ? <></> : <WindMoreData />}
-               </div>
+               <div>{moreDataIsVisible ? <WindMoreData /> : <></>}</div>
             </WindMoreInfoDiv>
          </HorizontalDiv>
       </Container>
