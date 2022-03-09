@@ -33,7 +33,7 @@ function TemperatureMoreData() {
 export default TemperatureMoreData;
 
 const Container = styled.div`
-   width: 20rem;
+   width: 22rem;
    height: 28rem;
    display: flex;
    flex-direction: column;
