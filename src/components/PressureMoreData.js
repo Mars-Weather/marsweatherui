@@ -18,7 +18,7 @@ export default PressureMoreData;
 
 const MainDiv = styled.div`
    width: 15rem;
-   height: 25rem;
+   height: 15rem;
    padding: 3rem;
 
    div {
