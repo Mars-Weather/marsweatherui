@@ -27,7 +27,6 @@ const Container = styled.div`
     position: relative; 
     overflow-x: hidden; 
     padding: 0 calc(3.5vw + 5px);
-    color: white; 
     
     &:before{
         background: url("/images/mars.jpg") center center / cover no-repeat;
@@ -45,6 +44,8 @@ const LeftColumn = styled.div`
     min-height: 70vh; 
     width: 30vw; 
     font-size: 100px; 
+    color: #d9d9d9; 
+    -webkit-text-stroke: 1px #4d4d4d;
 `
 const RightColumn = styled.div`
     position: fixed; 
@@ -55,6 +56,8 @@ const CenterColumn = styled.div`
     width: 30vw;
     text-align: center;
     font-size: 45px; 
+    color: #d9d9d9; 
+    -webkit-text-stroke: 1px #4d4d4d;
 `
 
 const Button = styled.div`

@@ -28,6 +28,7 @@ const Nav = styled.nav`
     align-items: center; 
     padding: 0 36px; 
     overflow: hidden; 
+    opacity:0.9;
 
     a{
         color: #ebe8e1;
