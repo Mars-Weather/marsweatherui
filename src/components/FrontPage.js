@@ -70,9 +70,7 @@ function FrontPage() {
 export default FrontPage;
 
 const Container = styled.div`
-   /* min-height: calc(100vh - 80px); */ //was
-   /* min-height: calc(100vh - 84px); //now */
-   min-height: calc(100vh - 84px);
+   min-height: calc(100vh - 70px);
    position: relative;
    overflow-x: hidden;
    padding: 0 calc(3.5vw + 5px);

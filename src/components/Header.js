@@ -22,6 +22,7 @@ function Header() {
 export default Header;
 
 const Nav = styled.nav`
+
     height: 70px; 
     background: #090b13;
     display: flex; 
@@ -29,7 +30,6 @@ const Nav = styled.nav`
     padding: 0 36px; 
     overflow: hidden; 
     opacity:0.9;
-
 
    a {
       color: #ebe8e1;
