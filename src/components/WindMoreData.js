@@ -6,7 +6,7 @@ function WindMoreData() {
       <Container>
          <TopDiv>
             <div>
-               <Title>Horizantal wind speed</Title>
+               <Title>Horizontal wind speed</Title>
             </div>
          </TopDiv>
          <CentralDiv>
