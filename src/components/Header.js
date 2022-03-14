@@ -1,4 +1,5 @@
 import react from "react";
+import {Link} from 'react-router-dom';
 import styled from "styled-components";
 
 function Header() {
@@ -8,8 +9,8 @@ function Header() {
             <a><img src="/images/mars-logo.png" alt=""/></a>
             <a>Mars-Weather</a>
             <NavMenu>
-                <a><span>Today</span></a>
-                <a><span>7 days</span></a>
+                <Link class="nav-link" to="/"><a><span>Today</span></a></Link>
+                <Link class="nav-link" to="/weekdata"><a><span>7 days</span></a></Link>
             </NavMenu>
             <RightMenu>
                 <LeftButton><span>° F</span></LeftButton>
@@ -23,7 +24,7 @@ export default Header;
 
 const Nav = styled.nav`
 
-    height: 70px; 
+    height: 4.375rem; 
     background: #090b13;
     display: flex; 
     align-items: center; 
@@ -37,6 +38,10 @@ const Nav = styled.nav`
 
    img {
       height: 80px;
+   }
+   
+   .nav-link{
+        text-decoration: none; 
    }
 `;
 
