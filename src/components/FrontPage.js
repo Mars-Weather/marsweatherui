@@ -5,6 +5,8 @@ import TemperatureMoreData from "./TemperatureMoreData";
 import PressureMoreData from "./PressureMoreData";
 import WindMoreData from "./WindMoreData";
 
+// import arrow from ../../pu
+
 const API_URL = "https://localhost:7090/api/"; // + sol/
 
 function FrontPage() {
@@ -41,6 +43,10 @@ function FrontPage() {
             }
         });
     };
+
+    console.log("====================================");
+    console.log(allData);
+    console.log("====================================");
 
     return (
         <Container>
@@ -81,10 +87,9 @@ function FrontPage() {
                                         />
                                     ) : (
                                         <p>
-                                            {
-                                                selectedSolData.temperature
-                                                    .average
-                                            }
+                                            {selectedSolData.temperature.average.toFixed(
+                                                2
+                                            )}
                                             ° F
                                         </p>
                                     )}
@@ -100,7 +105,9 @@ function FrontPage() {
                                         />
                                     ) : (
                                         <p>
-                                            {selectedSolData.pressure.average}{" "}
+                                            {selectedSolData.pressure.average.toFixed(
+                                                2
+                                            )}{" "}
                                             PA
                                         </p>
                                     )}
@@ -113,15 +120,28 @@ function FrontPage() {
                         <HorizontalDiv>
                             <WindSircleDiv>
                                 <div>
-                                    <p
-                                        style={{
-                                            fontSize: "5rem",
-                                            color: "#CBCBCB",
-                                        }}
-                                    >
-                                        wind circle
-                                    </p>
+                                    <img
+                                        src={
+                                            "/images/wind-circles/" +
+                                            selectedSolData.wind
+                                                .mostCommonDirection +
+                                            ".png"
+                                        }
+                                        alt=""
+                                    />
                                 </div>
+                                {moreDataIsVisible ? (
+                                    <></>
+                                ) : (
+                                    <div>
+                                        <p>
+                                            {selectedSolData.wind.average.toFixed(
+                                                2
+                                            )}{" "}
+                                            m/s
+                                        </p>
+                                    </div>
+                                )}
                             </WindSircleDiv>
                             <WindMoreInfoDiv>
                                 <div>
@@ -254,9 +274,27 @@ const RightColumn = styled.div`
 const WindSircleDiv = styled.div`
     flex: 1.7;
     display: flex;
-    justify-content: center;
+    /* justify-content: right; */
     align-items: center;
-    padding-right: 2rem;
+    /* padding-right: 2rem; */
+    display: flex;
+    flex-direction: column;
+
+    div {
+        width: 100%;
+    }
+
+    img {
+        height: 450px;
+    }
+
+    p {
+        font-size: 2rem;
+        margin: 0;
+        font-weight: bold;
+        color: #d9d9d9;
+        padding-top: 5px;
+    }
 `;
 
 const WindMoreInfoDiv = styled.div`
