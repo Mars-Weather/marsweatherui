@@ -25,11 +25,6 @@ function FrontPage() {
             });
     };
 
-    console.log("====================================");
-    console.log(selectedSolData);
-    console.log("====================================");
-    // console.log(allAvailableSolNumbers);
-
     const show_hide_more_data = () => {
         if (moreDataIsVisible) {
             setMoreDataIsVisible(false);
@@ -46,10 +41,6 @@ function FrontPage() {
             }
         });
     };
-
-    // if (selectedSolData.id) {
-    //     console.log(selectedSolData.temperature.average);
-    // }
 
     return (
         <Container>
