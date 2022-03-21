@@ -12,17 +12,17 @@ function PressureMoreData({ pressureData }) {
             <CentralDiv>
                 <div>
                     <Title>AVG</Title>
-                    <p>{pressureData.average}</p>
+                    <p>{pressureData.average} PA</p>
                 </div>
             </CentralDiv>
             <BottomDiv>
                 <div className="min-temp-div">
                     <Title style={{ paddingBottom: "2rem" }}>MIN</Title>
-                    <p>{pressureData.minimum}</p>
+                    <p>{pressureData.minimum} PA</p>
                 </div>
                 <div className="max-temp-div">
                     <Title style={{ paddingBottom: "2rem" }}>MAX</Title>
-                    <p>{pressureData.maximum}</p>
+                    <p>{pressureData.maximum} PA</p>
                 </div>
             </BottomDiv>
         </Container>
@@ -32,7 +32,7 @@ function PressureMoreData({ pressureData }) {
 export default PressureMoreData;
 
 const Container = styled.div`
-    width: 22rem;
+    width: 25.5rem;
     height: 20rem;
     display: flex;
     flex-direction: column;
