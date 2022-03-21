@@ -5,11 +5,9 @@ import TemperatureMoreData from "./TemperatureMoreData";
 import PressureMoreData from "./PressureMoreData";
 import WindMoreData from "./WindMoreData";
 
-// import arrow from ../../pu
-
 const API_URL = "https://localhost:7090/api/"; // + sol/
 
-function FrontPage() {
+function FrontPage({ tempUnit }) {
     const [moreDataIsVisible, setMoreDataIsVisible] = useState(false);
     const [allData, setAllData] = useState([]);
     const [selectedSolData, setSelectedSolData] = useState([]);
@@ -44,9 +42,14 @@ function FrontPage() {
         });
     };
 
-    console.log("====================================");
-    console.log(allData);
-    console.log("====================================");
+    // change temperature from F to C if needed
+    const getTemperature = (tempInF) => {
+        if (tempUnit === "C") {
+            return (((tempInF - 32) * 5) / 9).toFixed(2) + "° C";
+        } else {
+            return tempInF.toFixed(2) + "° F";
+        }
+    };
 
     return (
         <Container>
@@ -84,13 +87,14 @@ function FrontPage() {
                                             tempData={
                                                 selectedSolData.temperature
                                             }
+                                            getTemperature={getTemperature}
                                         />
                                     ) : (
                                         <p>
-                                            {selectedSolData.temperature.average.toFixed(
-                                                2
+                                            {getTemperature(
+                                                selectedSolData.temperature
+                                                    .average
                                             )}
-                                            ° F
                                         </p>
                                     )}
                                 </div>

@@ -1,7 +1,7 @@
 import react, { useState } from "react";
 import styled from "styled-components";
 
-function TemperatureMoreData({ tempData }) {
+function TemperatureMoreData({ tempData, getTemperature }) {
     return (
         <Container>
             <TopDiv>
@@ -13,17 +13,17 @@ function TemperatureMoreData({ tempData }) {
             <CentralDiv>
                 <div className="min-temp-div">
                     <Title>MIN</Title>
-                    <p>{tempData.minimum}</p>
+                    <p>{getTemperature(tempData.minimum)}</p>
                 </div>
                 <div className="max-temp-div">
                     <Title>MAX</Title>
-                    <p>{tempData.maximum}</p>
+                    <p>{getTemperature(tempData.maximum)}</p>
                 </div>
             </CentralDiv>
             <BottomDiv>
                 <div>
                     <Title>AVG</Title>
-                    <p>{tempData.average}</p>
+                    <p>{getTemperature(tempData.average)}</p>
                 </div>
             </BottomDiv>
         </Container>

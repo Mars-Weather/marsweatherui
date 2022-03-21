@@ -2,7 +2,7 @@ import react from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-function Header() {
+function Header({ set_Fahrenheit, set_Celsius }) {
     return (
         <Nav>
             {/*image source: https://freesvg.org/mars-planet*/}
@@ -23,10 +23,10 @@ function Header() {
                 </Link>
             </NavMenu>
             <RightMenu>
-                <LeftButton>
+                <LeftButton onClick={() => set_Fahrenheit()}>
                     <span>° F</span>
                 </LeftButton>
-                <RightButton>
+                <RightButton onClick={() => set_Celsius()}>
                     <span>° C</span>
                 </RightButton>
             </RightMenu>
@@ -118,5 +118,15 @@ const LeftButton = styled.div`
     align-items: center;
     justify-content: center;
     display: flex;
+    user-select: none;
+
+    :hover {
+        cursor: pointer;
+        box-shadow: 0px 0px 7.5px 4px white;
+    }
+
+    :active {
+        transform: translateY(2px);
+    }
 `;
 const RightButton = styled(LeftButton)``;
