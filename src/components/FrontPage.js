@@ -25,6 +25,7 @@ function FrontPage({ tempUnit }) {
             });
     };
 
+    // hide or show more data components
     const show_hide_more_data = () => {
         if (moreDataIsVisible) {
             setMoreDataIsVisible(false);
@@ -42,7 +43,7 @@ function FrontPage({ tempUnit }) {
         });
     };
 
-    // change temperature from F to C if needed
+    // return temperature and change it from F to C if needed
     const getTemperature = (tempInF) => {
         if (tempUnit === "C") {
             return (((tempInF - 32) * 5) / 9).toFixed(2) + "° C";
@@ -53,7 +54,7 @@ function FrontPage({ tempUnit }) {
 
     return (
         <Container>
-            {selectedSolData.id ? (
+            {selectedSolData.id ? ( // if no data available show Loading div
                 <>
                     <Subcontainer>
                         <LeftColumn>
@@ -213,6 +214,7 @@ const SolNumberDiv = styled.div`
         font-size: 2.5rem;
         color: white;
         margin: 0;
+        padding-right: 0.1rem;
     }
 
     .select-sol-div {
@@ -332,10 +334,16 @@ const Subcontainer = styled.div`
 
 const LoadingDiv = styled.div`
     //   SHOULD BE IN CENTER;
-    position: absolute;
+    /* position: absolute; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 70px);
 
     p {
-        font-size: 4rem;
+        margin: 0;
+        font-size: 5rem;
         color: white;
+        -webkit-text-stroke: 1px #4d4d4d;
     }
 `;
