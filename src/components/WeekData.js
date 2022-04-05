@@ -1,9 +1,21 @@
 import styled from 'styled-components';
+import {getWeekSols} from "../services/services";
+import {Card} from "react-bootstrap";
 
 function WeekData() {
     return (
         <Container>
-            <p>PAGE IS UNDER CONSTRUCTION</p>
+            <Card border="dark" style={{ width: '18rem', marginTop: "3rem", 
+                                        backgroundColor: "rgba(227, 227, 227, 0.8)", 
+                                        color: "black"}}>
+                <Card.Body>
+                    <Card.Title>Card Title</Card.Title>
+                        <Card.Text>
+                        Some quick example text to build on the card title and make up the bulk of
+                        the card's content.
+                        </Card.Text>
+                </Card.Body>
+            </Card>
         </Container>
     );
 }
