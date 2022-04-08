@@ -12,17 +12,29 @@ function WindMoreData({ windData }) {
             <CentralDiv>
                 <div>
                     <Title>AVG</Title>
-                    <p>{windData.average.toFixed(2)} m/s</p>
+                    {windData.average === null ? (
+                        <p>---</p>
+                    ) : (
+                        <p>{windData.average.toFixed(2)} m/s</p>
+                    )}
                 </div>
             </CentralDiv>
             <BottomDiv>
                 <div className="min-temp-div">
                     <Title style={{ paddingBottom: "2rem" }}>MIN</Title>
-                    <p>{windData.minimum.toFixed(2)} m/s</p>
+                    {windData.minimum === null ? (
+                        <p>---</p>
+                    ) : (
+                        <p>{windData.minimum.toFixed(2)} m/s</p>
+                    )}
                 </div>
                 <div className="max-temp-div">
                     <Title style={{ paddingBottom: "2rem" }}>MAX</Title>
-                    <p>{windData.maximum.toFixed(2)} m/s</p>
+                    {windData.maximum === null ? (
+                        <p>---</p>
+                    ) : (
+                        <p>{windData.maximum.toFixed(2)} m/s</p>
+                    )}
                 </div>
             </BottomDiv>
         </Container>

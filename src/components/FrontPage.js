@@ -45,10 +45,14 @@ function FrontPage({ tempUnit }) {
 
     // return temperature and change it from F to C if needed
     const getTemperature = (tempInF) => {
-        if (tempUnit === "C") {
-            return (((tempInF - 32) * 5) / 9).toFixed(2) + "° C";
+        if (tempInF === null) {
+            return "---";
         } else {
-            return tempInF.toFixed(2) + "° F";
+            if (tempUnit === "C") {
+                return (((tempInF - 32) * 5) / 9).toFixed(2) + "° C";
+            } else {
+                return tempInF.toFixed(2) + "° F";
+            }
         }
     };
 
@@ -109,12 +113,19 @@ function FrontPage({ tempUnit }) {
                                             }
                                         />
                                     ) : (
-                                        <p>
-                                            {selectedSolData.pressure.average.toFixed(
-                                                2
-                                            )}{" "}
-                                            PA
-                                        </p>
+                                        <>
+                                            {selectedSolData.pressure
+                                                .average === null ? (
+                                                <p>---</p>
+                                            ) : (
+                                                <p>
+                                                    {selectedSolData.pressure.average.toFixed(
+                                                        2
+                                                    )}{" "}
+                                                    PA
+                                                </p>
+                                            )}
+                                        </>
                                     )}
                                 </div>
                             </PressureDiv>
@@ -138,14 +149,21 @@ function FrontPage({ tempUnit }) {
                                 {moreDataIsVisible ? (
                                     <></>
                                 ) : (
-                                    <div>
-                                        <p>
-                                            {selectedSolData.wind.average.toFixed(
-                                                2
-                                            )}{" "}
-                                            m/s
-                                        </p>
-                                    </div>
+                                    <>
+                                        {selectedSolData.pressure.average ===
+                                        null ? (
+                                            <p></p>
+                                        ) : (
+                                            <div>
+                                                <p>
+                                                    {selectedSolData.wind.average.toFixed(
+                                                        2
+                                                    )}{" "}
+                                                    m/s
+                                                </p>
+                                            </div>
+                                        )}
+                                    </>
                                 )}
                             </WindSircleDiv>
                             <WindMoreInfoDiv>

@@ -12,17 +12,29 @@ function PressureMoreData({ pressureData }) {
             <CentralDiv>
                 <div>
                     <Title>AVG</Title>
-                    <p>{pressureData.average.toFixed(2)} PA</p>
+                    {pressureData.average === null ? (
+                        <p>---</p>
+                    ) : (
+                        <p>{pressureData.average.toFixed(2)} PA</p>
+                    )}
                 </div>
             </CentralDiv>
             <BottomDiv>
                 <div className="min-temp-div">
                     <Title style={{ paddingBottom: "2rem" }}>MIN</Title>
-                    <p>{pressureData.minimum.toFixed(2)} PA</p>
+                    {pressureData.minimum === null ? (
+                        <p>---</p>
+                    ) : (
+                        <p>{pressureData.minimum.toFixed(2)} PA</p>
+                    )}
                 </div>
                 <div className="max-temp-div">
                     <Title style={{ paddingBottom: "2rem" }}>MAX</Title>
-                    <p>{pressureData.maximum.toFixed(2)} PA</p>
+                    {pressureData.maximum === null ? (
+                        <p>---</p>
+                    ) : (
+                        <p>{pressureData.maximum.toFixed(2)} PA</p>
+                    )}
                 </div>
             </BottomDiv>
         </Container>
