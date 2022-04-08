@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# Mars-Weather App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The goal of the project is showing weather on Mars. The application fetches data from NASA open API [https://api.nasa.gov/](https://api.nasa.gov/). 
+
+You can read data specification here: [https://api.nasa.gov/assets/insight/InSight%20Weather%20API%20Documentation.pdf]
 
 ## Available Scripts
 
