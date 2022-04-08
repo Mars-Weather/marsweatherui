@@ -27,7 +27,9 @@ function App() {
                         path="/"
                         element={<FrontPage tempUnit={tempUnit} />}
                     ></Route>
-                    <Route path="/weekdata" element={WeekData()}></Route>
+                    <Route 
+                        path="/weekdata" 
+                        element={<WeekData/>}></Route>
                 </Routes>
             </Container>
         </BrowserRouter>
