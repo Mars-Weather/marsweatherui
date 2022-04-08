@@ -5,7 +5,7 @@ import TemperatureMoreData from "./TemperatureMoreData";
 import PressureMoreData from "./PressureMoreData";
 import WindMoreData from "./WindMoreData";
 
-const API_URL = "https://localhost:7090/api/"; // + sol/
+const API_URL = "https://marsweather.azurewebsites.net/api/"; // + sol/
 
 function FrontPage({ tempUnit }) {
     const [moreDataIsVisible, setMoreDataIsVisible] = useState(false);
