@@ -139,6 +139,8 @@ function FrontPage({ tempUnit }) {
                         <HorizontalDiv>
                             <WindSircleDiv>
                                 <div>
+                                    {selectedSolData.wind.average ===
+                                        null ? (<p></p>):
                                     <img
                                         src={
                                             "/images/wind-circles/" +
@@ -148,12 +150,13 @@ function FrontPage({ tempUnit }) {
                                         }
                                         alt=""
                                     />
+                                    }           
                                 </div>
                                 {moreDataIsVisible ? (
                                     <></>
                                 ) : (
                                     <>
-                                        {selectedSolData.pressure.average ===
+                                        {selectedSolData.wind.average ===
                                         null ? (
                                             <p></p>
                                         ) : (
@@ -220,7 +223,7 @@ const Container = styled.div`
 const LeftColumn = styled.div`
     min-height: 70vh;
     width: 30vw;
-    font-size: 100px;
+    font-size: 90px;
     color: #d9d9d9;
     -webkit-text-stroke: 1px #4d4d4d;
 `;
@@ -306,13 +309,15 @@ const WindSircleDiv = styled.div`
     /* padding-right: 2rem; */
     display: flex;
     flex-direction: column;
+    margin-top: 3rem; 
 
     div {
         width: 100%;
     }
 
     img {
-        height: 450px;
+        height: 100%;
+        width: 100%;
     }
 
     p {
