@@ -4,8 +4,11 @@ import styled from "styled-components";
 import TemperatureMoreData from "./TemperatureMoreData";
 import PressureMoreData from "./PressureMoreData";
 import WindMoreData from "./WindMoreData";
+import {sols, baseUrl} from "../services/urls";
 
-const API_URL = "https://marsweather.azurewebsites.net/api/"; // + sol/
+//const API_URL = "http://localhost:5019/api/"; // + sol/
+const API_URL = baseUrl;
+
 
 function FrontPage({ tempUnit }) {
     const [moreDataIsVisible, setMoreDataIsVisible] = useState(false);
@@ -17,7 +20,7 @@ function FrontPage({ tempUnit }) {
 
     // get all data from BackEnd
     const getAllData = (url) => {
-        fetch(url + "sol/")
+        fetch(url + "/sol/")
             .then((res) => res.json())
             .then((data) => {
                 setAllData(data.$values);
