@@ -4,6 +4,8 @@ The goal of the project is showing weather on Mars. The application fetches data
 
 You can read data specification here: [https://api.nasa.gov/assets/insight/InSight%20Weather%20API%20Documentation.pdf](https://api.nasa.gov/assets/insight/InSight%20Weather%20API%20Documentation.pdf)
 
+Application is running at [https://weather-mars.herokuapp.com/](https://weather-mars.herokuapp.com/).
+
 ## Available Scripts
 
 In the project directory, you can run:

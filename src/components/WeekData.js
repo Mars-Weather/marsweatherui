@@ -25,8 +25,9 @@ function WeekData(){
 
     let week_render = "";
     if(weekData){
-        let days_nbr = weekData["$values"].length - 7; // 7 last days in DB, to change when data comes from Nasa API
-        let week = weekData["$values"].slice(days_nbr); //to change when the data will come from Nasa API
+        //let days_nbr = weekData["$values"].length - 7; // 7 last days in DB, to change when data comes from Nasa API
+        let week = weekData["$values"].slice(0, 7); //to change when the data will come from Nasa API
+        console.log("Weekdata", week);
         week_render = week.map((item) => {
             return(
                 <div key={item.id} className="card" border="dark">
@@ -52,8 +53,8 @@ function WeekData(){
     const showTodaySol = () => {
         let today_sol = "";
         if(weekData){
-            let last_day = weekData["$values"].length - 1;
-            today_sol = weekData["$values"].slice(last_day)[0].solNumber;
+            //let last_day = weekData["$values"].length - 1;
+            today_sol = weekData["$values"].slice(6,7)[0].solNumber;
         }
         return today_sol;
     }
