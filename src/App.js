@@ -1,7 +1,7 @@
 import react, { useState } from "react";
 import Header from "./components/Header";
 import FrontPage from "./components/FrontPage";
-import WeekSolsData from "./components/WeekSolsData";
+import StatisticsPage from "./components/StatisticsPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import styled from "styled-components";
 
@@ -48,7 +48,7 @@ function App() {
                     <Route
                         path="/statistics"
                         element={
-                            <WeekSolsData
+                            <StatisticsPage
                                 tempUnit={tempUnit}
                                 getTemperature={getTemperature}
                             />
