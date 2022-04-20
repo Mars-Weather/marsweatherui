@@ -1,7 +1,6 @@
 import react, { useState } from "react";
 import Header from "./components/Header";
 import FrontPage from "./components/FrontPage";
-import WeekData from "./components/WeekData";
 import WeekSolsData from "./components/WeekSolsData";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import styled from "styled-components";
@@ -47,7 +46,7 @@ function App() {
                         }
                     ></Route>
                     <Route
-                        path="/weekdata"
+                        path="/statistics"
                         element={
                             <WeekSolsData
                                 tempUnit={tempUnit}

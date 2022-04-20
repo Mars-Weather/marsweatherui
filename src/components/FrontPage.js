@@ -22,7 +22,11 @@ function FrontPage({ getTemperature }) {
         fetch(url + "/sol/")
             .then((res) => res.json())
             .then((data) => {
-                setAllData(data.$values);
+                setAllData(
+                    data.$values.sort((a, b) =>
+                        parseInt(a.solNumber) > parseInt(b.solNumber) ? -1 : 1
+                    )
+                );
                 setSelectedSolData(data.$values[0]);
             });
     };
@@ -296,7 +300,9 @@ const WindSircleDiv = styled.div`
     /* padding-right: 2rem; */
     display: flex;
     flex-direction: column;
-    margin-top: 3rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding-left: 4rem;
 
     div {
         width: 100%;
@@ -338,6 +344,13 @@ const Button = styled.div`
     text-transform: uppercase;
     align-items: center;
     cursor: pointer;
+
+    :hover {
+        box-shadow: 0px 0px 7.5px 4px white;
+    }
+    :active {
+        transform: translateY(2px);
+    }
 `;
 
 const Subcontainer = styled.div`

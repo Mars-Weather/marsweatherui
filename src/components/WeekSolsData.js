@@ -1,13 +1,18 @@
 import react, { useState, useEffect, PureComponent } from "react";
 import styled from "styled-components";
 import SimpleLineChart from "./SimpleLineChart";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { baseUrl } from "../services/urls";
 const API_URL = baseUrl;
 
 function WeekSolsData({ tempUnit }) {
-    const [allWeekData, setAllWeekData] = useState({ "- - - - -": null });
-    const [selectedSolsData, setSelectedSolsData] = useState();
+    const [allData, setAllData] = useState([]);
+    const [selectedSolsData, setSelectedSolsData] = useState({});
+    const [selectedSolDataFrom, setSelectedSolDataFrom] = useState([]);
+    const [selectedSolDataTo, setSelectedSolDataTo] = useState([]);
+    const [dataForToSelect, setDataForToSelect] = useState([]);
+    const [toSelectIsDisabled, setToSelectIsDisabled] = useState(true);
 
     // get all data, then load website
     useEffect(() => {
@@ -20,136 +25,189 @@ function WeekSolsData({ tempUnit }) {
         fetch(url + "/sol/")
             .then((res) => res.json())
             .then((data) => {
-                makeWeekData(data.$values);
+                let new_data = data.$values;
+                new_data.unshift({ solNumber: "000", id: "0" }); // add 000 object
+                setAllData(new_data);
             });
     };
 
-    // set weekData to allWeekData state
-    const makeWeekData = (data) => {
-        data = data.reverse();
+    //create SelectedSolsData in range of From To
+    const makeSelectedSolsData = () => {
         let temperature_F = [];
         let temperature_C = [];
         let pressure = [];
         let wind = [];
-        let sols_numbers = [];
-        for (let i = 0; i < data.length; i++) {
-            // take only not null objects
+        let i = allData.indexOf(selectedSolDataFrom);
+        while (true) {
             if (
-                data[i].temperature.average !== null &&
-                data[i].pressure.average !== null &&
-                data[i].wind.average !== null
+                allData[i].temperature.average !== null &&
+                allData[i].pressure.average !== null &&
+                allData[i].wind.average !== null
             ) {
-                sols_numbers.push(parseInt(data[i]["solNumber"]));
                 temperature_F.push({
-                    name: data[i]["solNumber"],
-                    max: data[i]["temperature"]["maximum"],
-                    avg: data[i]["temperature"]["average"],
-                    min: data[i]["temperature"]["minimum"],
+                    name: allData[i]["solNumber"],
+                    max: allData[i]["temperature"]["maximum"],
+                    avg: allData[i]["temperature"]["average"],
+                    min: allData[i]["temperature"]["minimum"],
                 });
 
                 temperature_C.push({
-                    name: data[i]["solNumber"],
-                    max: ((data[i]["temperature"]["maximum"] - 32) * 5) / 9,
-                    avg: ((data[i]["temperature"]["average"] - 32) * 5) / 9,
-                    min: ((data[i]["temperature"]["minimum"] - 32) * 5) / 9,
+                    name: allData[i]["solNumber"],
+                    max: ((allData[i]["temperature"]["maximum"] - 32) * 5) / 9,
+                    avg: ((allData[i]["temperature"]["average"] - 32) * 5) / 9,
+                    min: ((allData[i]["temperature"]["minimum"] - 32) * 5) / 9,
                 });
                 pressure.push({
-                    name: data[i]["solNumber"],
-                    max: data[i]["pressure"]["maximum"],
-                    avg: data[i]["pressure"]["average"],
-                    min: data[i]["pressure"]["minimum"],
+                    name: allData[i]["solNumber"],
+                    max: allData[i]["pressure"]["maximum"],
+                    avg: allData[i]["pressure"]["average"],
+                    min: allData[i]["pressure"]["minimum"],
                 });
                 wind.push({
-                    name: data[i]["solNumber"],
-                    max: data[i]["wind"]["maximum"],
-                    avg: data[i]["wind"]["average"],
-                    min: data[i]["wind"]["minimum"],
+                    name: allData[i]["solNumber"],
+                    max: allData[i]["wind"]["maximum"],
+                    avg: allData[i]["wind"]["average"],
+                    min: allData[i]["wind"]["minimum"],
                 });
             }
-            //when there are 7 sols data, put them in AllWeekData
-            if (pressure.length === 7) {
-                temperature_F.sort((a, b) => (a.name > b.name ? 1 : -1));
-                temperature_C.sort((a, b) => (a.name > b.name ? 1 : -1));
-                pressure.sort((a, b) => (a.name > b.name ? 1 : -1));
-                wind.sort((a, b) => (a.name > b.name ? 1 : -1));
-
-                let sol_range =
-                    Math.min(...sols_numbers) + "-" + Math.max(...sols_numbers);
-
-                setAllWeekData((prevState) => ({
-                    ...prevState,
-                    [sol_range]: {
-                        temperature_F: temperature_F,
-                        temperature_C: temperature_C,
-                        pressure: pressure,
-                        wind: wind,
-                    },
-                }));
-                temperature_F = [];
-                temperature_C = [];
-                pressure = [];
-                wind = [];
-                sols_numbers = [];
+            if (allData[i].solNumber == selectedSolDataTo.solNumber) {
+                break;
+            } else {
+                i++;
             }
         }
+
+        setSelectedSolsData({
+            temperature_F: temperature_F,
+            temperature_C: temperature_C,
+            pressure: pressure,
+            wind: wind,
+        });
     };
 
-    const handleSelectChange = (event) => {
-        Object.keys(allWeekData).forEach((data) => {
-            if (data === event.target.value) {
-                setSelectedSolsData(data);
+    const handleSelectChangeFrom = (event) => {
+        allData.shift(); // remove 000 object from list of allData
+        allData.forEach((data) => {
+            if (data.solNumber == event.target.value) {
+                setSelectedSolDataFrom(data);
+                setDataForToSelect(
+                    allData.filter((el) => el.solNumber > data.solNumber)
+                );
+                setToSelectIsDisabled(false);
+            }
+        });
+    };
+
+    const handleSelectChangeTo = (event) => {
+        allData.forEach((data) => {
+            if (data.solNumber == event.target.value) {
+                setSelectedSolDataTo(data);
             }
         });
     };
 
     return (
         <Container>
-            {allWeekData ? ( // if no data available show Loading div
+            {allData.length > 0 ? ( // if no data available show Loading div
                 <>
                     <Subcontainer>
                         <WeekNumberDiv>
                             <div>
-                                <p>Sols:</p>
+                                <p>Sols From: </p>
                             </div>
                             <div className="select-sol-div">
                                 <select
-                                    name="sols Number"
-                                    value={selectedSolsData}
+                                    name="sols Number From"
+                                    // value={selectedSolsData}
                                     onChange={(event) =>
-                                        handleSelectChange(event)
+                                        handleSelectChangeFrom(event)
                                     }
                                 >
-                                    {Object.keys(allWeekData).map((data) => (
-                                        <option key={data} value={data}>
-                                            {data}
+                                    {allData.map((data) => (
+                                        <option
+                                            key={data.id}
+                                            value={data.solNumber}
+                                        >
+                                            {data.solNumber}
                                         </option>
                                     ))}
                                 </select>
                             </div>
-                            {!allWeekData[selectedSolsData] ? (
-                                <div className="helpFullText">
-                                    <p>Please choose the sols range</p>
-                                </div>
+                            <div>
+                                <p>To: </p>
+                            </div>
+                            <div className="select-sol-div">
+                                <select
+                                    disabled={toSelectIsDisabled}
+                                    name="sols Number To"
+                                    // value={selectedSolsData}
+                                    onChange={(event) =>
+                                        handleSelectChangeTo(event)
+                                    }
+                                >
+                                    {dataForToSelect.map((data) => (
+                                        <option
+                                            key={data.id}
+                                            value={data.solNumber}
+                                        >
+                                            {data.solNumber}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                            <div className="btn">
+                                <button
+                                    onClick={() => makeSelectedSolsData()}
+                                    style={{ width: "3rem", height: "3rem" }}
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        className="h-6 w-6"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                        strokeWidth={2}
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            d="M13 5l7 7-7 7M5 5l7 7-7 7"
+                                        />
+                                    </svg>
+                                </button>
+                            </div>
+                            {/* shows hints depending on what is selected and
+                            what is not */}
+                            {Object.keys(selectedSolsData).length === 0 ? (
+                                <>
+                                    {toSelectIsDisabled ? (
+                                        <div className="help-full-text">
+                                            <p>Please choose a FROM sol</p>
+                                        </div>
+                                    ) : (
+                                        <div className="help-full-text">
+                                            <p>Please choose a TO sol</p>
+                                        </div>
+                                    )}
+                                </>
                             ) : (
                                 <></>
                             )}
                         </WeekNumberDiv>
                         <TempColumn>
                             <p>Temperature (°{tempUnit})</p>
-                            {allWeekData[selectedSolsData] ? (
+                            {Object.keys(selectedSolsData).length !== 0 ? (
                                 <>
                                     {tempUnit === "F" ? (
                                         <SimpleLineChart
                                             data={
-                                                allWeekData[selectedSolsData]
-                                                    .temperature_F
+                                                selectedSolsData.temperature_F
                                             }
                                         />
                                     ) : (
                                         <SimpleLineChart
                                             data={
-                                                allWeekData[selectedSolsData]
-                                                    .temperature_C
+                                                selectedSolsData.temperature_C
                                             }
                                         />
                                     )}
@@ -162,13 +220,10 @@ function WeekSolsData({ tempUnit }) {
                         </TempColumn>
                         <PressureColumn>
                             <p>Pressure (Pa)</p>
-                            {allWeekData[selectedSolsData] ? (
+                            {Object.keys(selectedSolsData).length !== 0 ? (
                                 <>
                                     <SimpleLineChart
-                                        data={
-                                            allWeekData[selectedSolsData]
-                                                .pressure
-                                        }
+                                        data={selectedSolsData.pressure}
                                     />
                                 </>
                             ) : (
@@ -179,12 +234,10 @@ function WeekSolsData({ tempUnit }) {
                         </PressureColumn>
                         <WindColumn>
                             <p>Wind (m/s)</p>
-                            {allWeekData[selectedSolsData] ? (
+                            {Object.keys(selectedSolsData).length !== 0 ? (
                                 <>
                                     <SimpleLineChart
-                                        data={
-                                            allWeekData[selectedSolsData].wind
-                                        }
+                                        data={selectedSolsData.wind}
                                     />
                                 </>
                             ) : (
@@ -241,14 +294,39 @@ const WeekNumberDiv = styled.div`
         font-size: 2.5rem;
         color: white;
         margin: 0;
-        padding-right: 0.1rem;
+    }
+
+    .btn {
+        align-self: center;
+        align-items: center;
+
+        button {
+            margin: 0;
+            padding: 0.2rem;
+            background-color: transparent;
+            border: 4px solid white;
+            border-radius: 18px;
+        }
+        button:hover {
+            cursor: pointer;
+            box-shadow: 0px 0px 7.5px 4px white;
+        }
+
+        button:active {
+            transform: translateY(2px);
+        }
+
+        svg {
+            color: white;
+        }
     }
 
     .select-sol-div {
-        display: contents;
+        /* display: contents; */
     }
 
     select {
+        min-width: 8rem;
         margin-left: 0.5rem;
         padding: 5px;
         font-size: 2.5rem;
@@ -256,9 +334,10 @@ const WeekNumberDiv = styled.div`
         border: none;
         color: black;
         text-align-last: center;
+        margin-right: 2rem;
     }
 
-    .helpFullText {
+    .help-full-text {
         display: flex;
         align-items: center;
         p {
