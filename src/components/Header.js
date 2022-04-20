@@ -16,9 +16,9 @@ function Header({ set_Fahrenheit, set_Celsius }) {
                         <span>Today</span>
                     </a>
                 </Link>
-                <Link className="nav-link" to="/weekdata">
+                <Link className="nav-link" to="/statistics">
                     <a>
-                        <span>7 days</span>
+                        <span>Statistics</span>
                     </a>
                 </Link>
             </NavMenu>

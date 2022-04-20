@@ -4,13 +4,12 @@ import styled from "styled-components";
 import TemperatureMoreData from "./TemperatureMoreData";
 import PressureMoreData from "./PressureMoreData";
 import WindMoreData from "./WindMoreData";
-import {sols, baseUrl} from "../services/urls";
+import { sols, baseUrl } from "../services/urls";
 
 //const API_URL = "http://localhost:5019/api/"; // + sol/
 const API_URL = baseUrl;
 
-
-function FrontPage({ tempUnit }) {
+function FrontPage({ getTemperature }) {
     const [moreDataIsVisible, setMoreDataIsVisible] = useState(false);
     const [allData, setAllData] = useState([]);
     const [selectedSolData, setSelectedSolData] = useState([]);
@@ -23,7 +22,11 @@ function FrontPage({ tempUnit }) {
         fetch(url + "/sol/")
             .then((res) => res.json())
             .then((data) => {
-                setAllData(data.$values);
+                setAllData(
+                    data.$values.sort((a, b) =>
+                        parseInt(a.solNumber) > parseInt(b.solNumber) ? -1 : 1
+                    )
+                );
                 setSelectedSolData(data.$values[0]);
             });
     };
@@ -44,19 +47,6 @@ function FrontPage({ tempUnit }) {
                 setSelectedSolData(data);
             }
         });
-    };
-
-    // return temperature and change it from F to C if needed
-    const getTemperature = (tempInF) => {
-        if (tempInF === null) {
-            return "---";
-        } else {
-            if (tempUnit === "C") {
-                return (((tempInF - 32) * 5) / 9).toFixed(2) + "° C";
-            } else {
-                return tempInF.toFixed(2) + "° F";
-            }
-        }
     };
 
     return (
@@ -139,18 +129,19 @@ function FrontPage({ tempUnit }) {
                         <HorizontalDiv>
                             <WindSircleDiv>
                                 <div>
-                                    {selectedSolData.wind.average ===
-                                        null ? (<p></p>):
-                                    <img
-                                        src={
-                                            "/images/wind-circles/" +
-                                            selectedSolData.wind
-                                                .mostCommonDirection +
-                                            ".png"
-                                        }
-                                        alt=""
-                                    />
-                                    }           
+                                    {selectedSolData.wind.average === null ? (
+                                        <p></p>
+                                    ) : (
+                                        <img
+                                            src={
+                                                "/images/wind-circles/" +
+                                                selectedSolData.wind
+                                                    .mostCommonDirection +
+                                                ".png"
+                                            }
+                                            alt=""
+                                        />
+                                    )}
                                 </div>
                                 {moreDataIsVisible ? (
                                     <></>
@@ -193,7 +184,7 @@ function FrontPage({ tempUnit }) {
                 </>
             ) : (
                 <LoadingDiv>
-                    <p>Loading....</p>
+                    <p>Loading...</p>
                 </LoadingDiv>
             )}
         </Container>
@@ -309,7 +300,9 @@ const WindSircleDiv = styled.div`
     /* padding-right: 2rem; */
     display: flex;
     flex-direction: column;
-    margin-top: 3rem; 
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding-left: 4rem;
 
     div {
         width: 100%;
@@ -351,6 +344,13 @@ const Button = styled.div`
     text-transform: uppercase;
     align-items: center;
     cursor: pointer;
+
+    :hover {
+        box-shadow: 0px 0px 7.5px 4px white;
+    }
+    :active {
+        transform: translateY(2px);
+    }
 `;
 
 const Subcontainer = styled.div`
