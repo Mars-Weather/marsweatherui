@@ -1,12 +1,14 @@
 import react, { useState } from "react";
 import Header from "./components/Header";
 import FrontPage from "./components/FrontPage";
+import WeekData from "./components/WeekDate";
 import StatisticsPage from "./components/StatisticsPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import styled from "styled-components";
 
 function App() {
     const [tempUnit, setTempUnit] = useState("C");
+    const [currentSolNum, setcurrentSolNum] = useState(0);
 
     const set_Celsius = () => {
         setTempUnit("C");
@@ -28,12 +30,18 @@ function App() {
         }
     };
 
+    //update current sol number
+    const updateCurrentSolNumber = (sol_num) => {
+        setcurrentSolNum(sol_num);
+    };
+
     return (
         <BrowserRouter>
             <Container>
                 <Header
                     set_Celsius={set_Celsius}
                     set_Fahrenheit={set_Fahrenheit}
+                    currentSolNum={currentSolNum}
                 />
                 <Routes>
                     <Route
@@ -42,8 +50,14 @@ function App() {
                             <FrontPage
                                 tempUnit={tempUnit}
                                 getTemperature={getTemperature}
+                                updateCurrentSolNumber={updateCurrentSolNumber}
                             />
                         }
+                    ></Route>
+                    <Route
+                        path="/weekData"
+                        element={<WeekData />}
+                        updateCurrentSolNumber={updateCurrentSolNumber}
                     ></Route>
                     <Route
                         path="/statistics"
@@ -51,6 +65,7 @@ function App() {
                             <StatisticsPage
                                 tempUnit={tempUnit}
                                 getTemperature={getTemperature}
+                                updateCurrentSolNumber={updateCurrentSolNumber}
                             />
                         }
                     ></Route>

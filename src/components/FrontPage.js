@@ -9,7 +9,7 @@ import { sols, baseUrl } from "../services/urls";
 //const API_URL = "http://localhost:5019/api/"; // + sol/
 const API_URL = baseUrl;
 
-function FrontPage({ getTemperature }) {
+function FrontPage({ getTemperature, updateCurrentSolNumber }) {
     const [moreDataIsVisible, setMoreDataIsVisible] = useState(false);
     const [allData, setAllData] = useState([]);
     const [selectedSolData, setSelectedSolData] = useState([]);
@@ -28,6 +28,7 @@ function FrontPage({ getTemperature }) {
                     )
                 );
                 setSelectedSolData(data.$values[0]);
+                updateCurrentSolNumber(data.$values[0].solNumber);
             });
     };
 
