@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { baseUrl } from "../services/urls";
 const API_URL = baseUrl;
 
-function WeekSolsData({ tempUnit }) {
+function WeekSolsData({ tempUnit, updateCurrentSolNumber }) {
     const [allData, setAllData] = useState([]);
     const [selectedSolsData, setSelectedSolsData] = useState({});
     const [selectedSolDataFrom, setSelectedSolDataFrom] = useState([]);
@@ -28,6 +28,7 @@ function WeekSolsData({ tempUnit }) {
                 let new_data = data.$values;
                 new_data.unshift({ solNumber: "000", id: "0" }); // add 000 object
                 setAllData(new_data);
+                updateCurrentSolNumber(data.$values.slice(-1)[0].solNumber);
             });
     };
 
@@ -344,7 +345,7 @@ const WeekNumberDiv = styled.div`
             padding-left: 1.5rem;
             font-size: 1.7rem;
 
-            color: red;
+            color: #ff8f00;
         }
     }
 `;

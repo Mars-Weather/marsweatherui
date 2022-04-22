@@ -2,18 +2,27 @@ import react from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-function Header({ set_Fahrenheit, set_Celsius }) {
+function Header({ set_Fahrenheit, set_Celsius, currentSolNum }) {
     return (
         <Nav>
-            {/*image source: https://freesvg.org/mars-planet*/}
-            <a>
-                <img src="/images/mars-logo.png" alt="" />
-            </a>
-            <a>Mars-Weather</a>
+            <LeftMenu>
+                {/*image source: https://freesvg.org/mars-planet*/}
+                <Link to="/">
+                    <img src="/images/mars-logo.png" alt="mars-logo" />
+                </Link>
+                {/* change to p, make div, make div pos left and rignth only */}
+                <p>Mars-Weather</p>
+                <p className="current-sol">Current Sol: {currentSolNum}</p>
+            </LeftMenu>
             <NavMenu>
                 <Link className="nav-link" to="/">
                     <a>
                         <span>Today</span>
+                    </a>
+                </Link>
+                <Link className="nav-link" to="/weekData">
+                    <a>
+                        <span>7 days</span>
                     </a>
                 </Link>
                 <Link className="nav-link" to="/statistics">
@@ -44,13 +53,10 @@ const Nav = styled.nav`
     padding: 0 36px;
     overflow: hidden;
     opacity: 0.9;
+    justify-content: center;
 
     a {
         color: #ebe8e1;
-    }
-
-    img {
-        height: 80px;
     }
 
     .nav-link {
@@ -58,10 +64,31 @@ const Nav = styled.nav`
     }
 `;
 
+const LeftMenu = styled.div`
+    height: 4.375rem;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 2rem;
+
+    p {
+        color: #ebe8e1;
+        margin: 0;
+    }
+
+    .current-sol {
+        padding-left: 5rem;
+        font-size: 1.5rem;
+    }
+
+    img {
+        height: 75px;
+        padding-top: 5px;
+    }
+`;
+
 const NavMenu = styled.div`
     display: flex;
-    flex: 1;
-    margin-left: 25px;
     align-items: center;
     justify-content: center;
 
@@ -106,6 +133,8 @@ const RightMenu = styled.div`
     display: flex;
     align-items: center;
     text-transform: uppercase;
+    position: absolute;
+    right: 2rem;
 `;
 const LeftButton = styled.div`
     color: #ebe8e1;
