@@ -268,9 +268,10 @@ const PressureDiv = styled.div`
 `;
 
 const RightColumn = styled.div`
-    flex: 1;
+    /* flex: 1; */
     text-align: center;
     display: flex;
+    width: 30vw;
     flex-direction: column;
     /* padding: 1rem; */
 `;
@@ -308,7 +309,7 @@ const WindSircleDiv = styled.div`
     flex-direction: column;
     margin-top: 2rem;
     margin-bottom: 1rem;
-    padding-left: 4rem;
+    padding-left: 6rem;
 
     div {
         width: 100%;
