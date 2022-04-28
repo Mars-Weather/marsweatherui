@@ -284,7 +284,7 @@ const CenterColumn = styled.div`
 
     p {
         font-size: 3rem;
-        padding-top: 1rem;
+        padding-top: 4rem;
         font-weight: bold;
     }
 `;
