@@ -127,7 +127,7 @@ function FrontPage({ getTemperature, updateCurrentSolNumber }) {
                         <CenterColumn>
                             <p>Season: {selectedSolData.season}</p>
                         </CenterColumn>
-                        <HorizontalDiv>
+                        <RightColumn>
                             <WindSircleDiv>
                                 <div>
                                     {selectedSolData.wind.average === null ? (
@@ -175,12 +175,14 @@ function FrontPage({ getTemperature, updateCurrentSolNumber }) {
                                     )}
                                 </div>
                             </WindMoreInfoDiv>
-                        </HorizontalDiv>
-                        <RightColumn>
-                            <Button onClick={() => show_hide_more_data()}>
-                                More data
-                            </Button>
                         </RightColumn>
+                        <BtnDiv>
+                            <div>
+                                <Button onClick={() => show_hide_more_data()}>
+                                    More data
+                                </Button>
+                            </div>
+                        </BtnDiv>
                     </Subcontainer>
                 </>
             ) : (
@@ -265,7 +267,7 @@ const PressureDiv = styled.div`
     padding-left: 2rem;
 `;
 
-const HorizontalDiv = styled.div`
+const RightColumn = styled.div`
     flex: 1;
     text-align: center;
     display: flex;
@@ -287,10 +289,13 @@ const CenterColumn = styled.div`
     }
 `;
 
-const RightColumn = styled.div`
+const BtnDiv = styled.div`
+    display: flex;
+    justify-content: center;
     position: fixed;
-    right: 30px;
+    width: 100%;
     bottom: 30px;
+    left: 0;
 `;
 
 const WindSircleDiv = styled.div`
