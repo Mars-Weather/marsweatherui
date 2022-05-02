@@ -1,74 +1,43 @@
+**Table of contents**
+1. Introduction
+2. Getting Started
+3. Usage
+4. Licence 
+5. Authors
 # Mars-Weather App
 
-The goal of the project is showing weather on Mars. The application fetches data from NASA open API [https://api.nasa.gov/](https://api.nasa.gov/). 
+Mars-Weather App was created as a school project at Haaga-Helia University of Applied Sciences. 
+The application aims to show weather on the Mars based on the data from NASA open API [https://api.nasa.gov/](https://api.nasa.gov/). 
 
-You can read data specification here: [https://api.nasa.gov/assets/insight/InSight%20Weather%20API%20Documentation.pdf](https://api.nasa.gov/assets/insight/InSight%20Weather%20API%20Documentation.pdf)
+You can read data specification: 
 
-Application is running at [https://weather-mars.herokuapp.com/](https://weather-mars.herokuapp.com/).
+[https://api.nasa.gov/assets/insight/InSight%20Weather%20API%20Documentation.pdf](https://api.nasa.gov/assets/insight/InSight%20Weather%20API%20Documentation.pdf)
 
-## Available Scripts
+Application can be accessed on-line: 
 
-In the project directory, you can run:
+[https://weather-mars.herokuapp.com/](https://weather-mars.herokuapp.com/).
 
-### `npm start`
+### Built With
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+>- [React.js](https://reactjs.org/)
+>- [Bootstrap](https://react-bootstrap.github.io/)
+>- [Styled components](https://styled-components.com/)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting started
 
-### `npm test`
+###Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+###Installation 
 
-### `npm run build`
+##Usage 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 1. Browser support
+Mars-Weather App supports all major browsers and platforms. 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+##Licence
 
-### `npm run eject`
+Licensed under MIT Licence. [Read more:](https://choosealicense.com/licenses/mit/)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+##Authors 
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
