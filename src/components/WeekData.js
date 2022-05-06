@@ -16,6 +16,12 @@ const WeekData = ({}) => {
      * Fetching all data
      */
     useEffect(() => {
+        (async () => {
+            getWeekSols.then(setWeekData).catch(setError);
+        })();
+    }, []);
+
+    /*useEffect(() => {
         let isMounted = true;
         (async () => {
             getWeekSols()
@@ -29,13 +35,14 @@ const WeekData = ({}) => {
         return () => {
             isMounted = false;
         };
-    }, []);
+    }, []);*/
 
     /**
-     * Funcktion that maps and displays week data
+     * Function that maps and displays week data
      * @returns rendered week data
      */
     const display_week_data = () => {
+        console.log("Here", weekData);
         let week_render = "";
         if (weekData) {
             //let days_nbr = weekData["$values"].length - 7; // 7 last days in DB, to change when data comes from Nasa API

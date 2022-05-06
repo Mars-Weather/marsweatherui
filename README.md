@@ -54,7 +54,7 @@ Mars-Weather App supports all major browsers and platforms.
 
 ## Licence
 
-Licensed under GNU LGPLv3 Licence. [Read more:](https://choosealicense.com/licenses/lgpl-3.0/)
+Licensed under MIT Licence. [Read more](https://choosealicense.com/licenses/mit/)
 
 ## Project participants
 
