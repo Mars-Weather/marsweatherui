@@ -1,19 +1,27 @@
-import { useState, useEffect } from "react";
+import {useState, useEffect} from "react";
 import styled from "styled-components";
-import { getWeekSols } from "../services/services";
+import {getWeekSols} from "../services/services";
 
 import "../stylesheets/styles.css";
+import data from "bootstrap/js/src/dom/data";
 
 /**
  * Week data component fetches and displays the data for the last 7 days
  * @returns data for the last seven days
  */
 const WeekData = ({}) => {
+    /**
+     * Measurement units for temperature, pressure and speed
+     * @type {string} all measument units are of type string
+     */
+    const temp_fahrenheit = "° F";
+    const pressure = "PA";
+    const speed = "m/s";
     const [weekData, setWeekData] = useState("");
     const [error, setError] = useState("");
 
     /**
-     * Fetching all data
+     * Fetching data for the last 7 sols
      */
     useEffect(() => {
         (async () => {
@@ -21,75 +29,47 @@ const WeekData = ({}) => {
         })();
     }, []);
 
-    /*useEffect(() => {
-        let isMounted = true;
-        (async () => {
-            getWeekSols()
-                .then((obj) => {
-                    if (isMounted) {
-                        setWeekData(obj);
-                    }
-                })
-                .catch((err) => setError(err));
-        })();
-        return () => {
-            isMounted = false;
-        };
-    }, []);*/
+    const data_output = (item, unit) => {
+        let result = "";
+
+        if (item == null) {
+            result = "No data available"
+        } else {
+            result = item + " " + unit;
+        }
+        return result;
+    }
 
     /**
      * Function that maps and displays week data
      * @returns rendered week data
      */
     const display_week_data = () => {
-        console.log("Here", weekData);
         let week_render = "";
         if (weekData) {
-            //let days_nbr = weekData["$values"].length - 7; // 7 last days in DB, to change when data comes from Nasa API
-            // take 7 last sols
-            let week = weekData["$values"]
-                .sort((a, b) =>
-                    parseInt(a.solNumber) > parseInt(b.solNumber) ? -1 : 1
-                )
-                .slice(0, 7);
-            week = week.sort((a, b) =>
-                parseInt(a.solNumber) < parseInt(b.solNumber) ? -1 : 1
-            ); //to change when the data will come from Nasa API
+            let week = weekData;
             week_render = week.map((item) => {
                 return (
                     <div key={item.id} className="card" border="dark">
                         <div className="heading">Sol: {item.solNumber}</div>
                         <p className="heading">Temperature</p>
-                        <p>Min: {item.temperature.minimum}° F</p>
-                        <p>Max: {item.temperature.maximum}° F</p>
-                        <p>AVG: {item.temperature.average}° F</p>
-                        <p className="heading">Pressure</p>
-                        <p>Min: {item.pressure.minimum} PA </p>
-                        <p>Max: {item.pressure.maximum} PA </p>
-                        <p>AVG: {item.pressure.average} PA </p>
+                        <p>Min: {data_output(item.temperature.minimum, temp_fahrenheit)} </p>
+                        <p>Max: {data_output(item.temperature.maximum, temp_fahrenheit)} </p>
+                        <p>AVG: {data_output(item.temperature.average, temp_fahrenheit)} </p>
+                        <p className="heading"> Pressure </p>
+                        <p>Min: {data_output(item.pressure.minimum, pressure)} </p>
+                        <p>Max: {data_output(item.pressure.maximum, pressure)} </p>
+                        <p>AVG: {data_output(item.pressure.average, pressure)} </p>
                         <p className="heading">Wind speed</p>
-                        <p>Min: {item.wind.minimum} m/s</p>
-                        <p>Max: {item.wind.maximum} m/s</p>
-                        <p>AVG: {item.wind.average} m/s</p>
-                        <p>Direction: {item.wind.mostCommonDirection}</p>
+                        <p>Min: {data_output(item.wind.minimum, speed)} </p>
+                        <p>Max: {data_output(item.wind.maximum, speed)} </p>
+                        <p>AVG: {data_output(item.wind.average, speed)} </p>
+                        <p>Direction: {data_output(item.wind.mostCommonDirection, "")} </p>
                     </div>
                 );
             });
         }
         return week_render;
-    };
-
-    /**
-     * Function that displays today sol number
-     * @returns today sol number (data type: number)
-     */
-    const showTodaySol = () => {
-        let today_sol = "";
-        if (weekData) {
-            //let last_day = weekData["$values"].length - 1;
-            today_sol = weekData["$values"].slice(6, 7)[0].solNumber;
-        }
-        return today_sol;
     };
 
     return (

@@ -1,10 +1,20 @@
-import { sols } from "./urls";
+import { sols, weekSols } from "./urls";
 
-export const getWeekSols = async () => {
-    const result = await fetch(sols)
-        .then((res) => res.json())
-        .catch((err) => console.log(err));
-    // console.log("Result", result);
+/**
+ * Function that fetches jason
+ * @param url api endpoint
+ * @returns {Promise<any>}
+ */
+const fetch_json_payload = async(url) => {
+    try {
+        const response = await fetch(url);
+        return await response.json();
+    } catch (e) {
+        console.error(e);
+        throw e;
+    }
+}
 
-    return result;
-};
+export const getAllSols = fetch_json_payload(sols);
+
+export const getWeekSols = fetch_json_payload(weekSols);

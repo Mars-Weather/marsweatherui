@@ -1,7 +1,7 @@
 import react, { useState } from "react";
 import Header from "./components/Header";
 import FrontPage from "./components/FrontPage";
-import WeekData from "./components/WeekDate";
+import WeekData from "./components/WeekData";
 import StatisticsPage from "./components/StatisticsPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import styled from "styled-components";
