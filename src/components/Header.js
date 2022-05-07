@@ -1,14 +1,14 @@
 import react from "react";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import styled from "styled-components";
 
-function Header({ set_Fahrenheit, set_Celsius, currentSolNum }) {
+function Header({set_Fahrenheit, set_Celsius, currentSolNum}) {
     return (
         <Nav>
             <LeftMenu>
                 {/*image source: https://freesvg.org/mars-planet*/}
                 <Link to="/">
-                    <img src="/images/mars-logo.png" alt="mars-logo" />
+                    <img src="/images/mars-logo.png" alt="mars-logo"/>
                 </Link>
                 {/* change to p, make div, make div pos left and rignth only */}
                 <p>Mars-Weather</p>
@@ -16,19 +16,13 @@ function Header({ set_Fahrenheit, set_Celsius, currentSolNum }) {
             </LeftMenu>
             <NavMenu>
                 <Link className="nav-link" to="/">
-                    <a>
-                        <span>Today</span>
-                    </a>
+                    <span>Today</span>
                 </Link>
                 <Link className="nav-link" to="/weekData">
-                    <a>
-                        <span>7 days</span>
-                    </a>
+                    <span>7 days</span>
                 </Link>
                 <Link className="nav-link" to="/statistics">
-                    <a>
-                        <span>Statistics</span>
-                    </a>
+                    <span>Statistics</span>
                 </Link>
             </NavMenu>
             <RightMenu>
@@ -74,11 +68,11 @@ const LeftMenu = styled.div`
     p {
         color: #ebe8e1;
         margin: 0;
+        font-size: 1.2rem;
     }
 
     .current-sol {
         padding-left: 5rem;
-        font-size: 1.5rem;
     }
 
     img {
