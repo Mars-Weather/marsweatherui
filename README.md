@@ -67,6 +67,13 @@ Version 1.0 has the following functionalities:
 - statistics for temperature, pressure and wind 
 - displaying data for the chosen period
 
+### 3. Road Map 
+
+Following functionalities are planned in the next version:
+
+- support for smaller screens
+- selecting data to be displayed (e.g. temperature, pressure) in the sol selector
+
 ## Licence
 
 Licensed under MIT Licence. [Read more](https://choosealicense.com/licenses/mit/)
