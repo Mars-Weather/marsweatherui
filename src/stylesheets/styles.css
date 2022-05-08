@@ -11,15 +11,11 @@
 
 /*media queries*/
 @media (max-width: 480px) {
-    .card {
-        background-color: aqua;
-    }
+
 }
 
 @media (max-width: 768px) {
-    .card {
-        background-color: blue;
-    }
+
 }
 
 @media (max-width: 1024px) {
