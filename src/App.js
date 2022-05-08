@@ -1,9 +1,10 @@
-import react, { useState } from "react";
+import react, {useState} from "react";
 import Header from "./components/Header";
 import FrontPage from "./components/FrontPage";
 import WeekData from "./components/WeekData";
 import StatisticsPage from "./components/StatisticsPage";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import SolSelector from "./components/SolSelector";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import styled from "styled-components";
 
 function App() {
@@ -31,6 +32,10 @@ function App() {
     };
 
     //update current sol number
+    /**
+     * Function to be called from other components in  order to pass uodated sol number to App component
+     * @param sol_num number of sol
+     */
     const updateCurrentSolNumber = (sol_num) => {
         setcurrentSolNum(sol_num);
     };
@@ -56,7 +61,7 @@ function App() {
                     ></Route>
                     <Route
                         path="/weekData"
-                        element={<WeekData />}
+                        element={<WeekData/>}
                         updateCurrentSolNumber={updateCurrentSolNumber}
                     ></Route>
                     <Route
@@ -68,6 +73,10 @@ function App() {
                                 updateCurrentSolNumber={updateCurrentSolNumber}
                             />
                         }
+                    ></Route>
+                    <Route path="/solselector"
+                           element={<SolSelector/>}
+                           updateCurrentSolNumber={updateCurrentSolNumber}
                     ></Route>
                 </Routes>
             </Container>

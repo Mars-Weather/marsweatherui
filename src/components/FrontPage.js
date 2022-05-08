@@ -32,7 +32,9 @@ function FrontPage({ getTemperature, updateCurrentSolNumber }) {
             });
     };
 
-    // hide or show more data components
+    /**
+     * Function that hides or shows more data components
+     */
     const show_hide_more_data = () => {
         if (moreDataIsVisible) {
             setMoreDataIsVisible(false);
