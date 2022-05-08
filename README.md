@@ -21,9 +21,10 @@ Application can be accessed on-line:
 
 ### Built With
 
-> - [React.js](https://reactjs.org/)
->- [Bootstrap](https://react-bootstrap.github.io/)
->- [Styled components](https://styled-components.com/)
+- [React.js](https://reactjs.org/)
+- [Bootstrap](https://react-bootstrap.github.io/)
+- [Styled components](https://styled-components.com/)
+- [React Date Picker](https://reactdatepicker.com/#example-calendar-container)
 
 ## Getting started
 
@@ -50,7 +51,21 @@ Application can be accessed on-line:
 
 ### 1. Browser support
 
-Mars-Weather App supports all major browsers and platforms.
+Mars-Weather App supports all major browsers. Version 1.0 of the application is only intended 
+for large screens (1350 x 1200 or more). 
+
+### 2. Application main functionalities
+
+Version 1.0 has the following functionalities: 
+
+- displaying number of current sol 
+- displaying weather of the current sol
+- displaying weather by sol and an option to choose a sol number 
+- displaying an average, minimum and maximum values for temperature, pressure and wind speed (current sol and for the chosen sol)
+- displaying wind direction (current sol and chosen sol)
+- displaying weather of the last seven sols 
+- statistics for temperature, pressure and wind 
+- displaying data for the chosen period
 
 ## Licence
 
