@@ -38,7 +38,7 @@ const SolsTable = (props) => {
 
         const items = data['$values'].map((item) => {
             return (
-                <tr key={item.id}>
+                <tr key={item.$id}>
                     <td>{item.solNumber}</td>
                     <td>{item.season ? item.season : no_data}</td>
                     <td>{item.temperature.average ? item.temperature.average.toFixed(2) : no_data}</td>
