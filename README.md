@@ -44,7 +44,7 @@ Application can be accessed on-line:
 2. Start the application
 
  ```sh
-   npm install
+   npm start
    ```
 
 ## Usage
