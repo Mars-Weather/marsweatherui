@@ -6,18 +6,14 @@
 4. Licence
 5. Project participants
 
-# Mars-Weather App
+# Mars Weather App
 
-Mars-Weather App was created as a school project at Haaga-Helia University of Applied Sciences. The application aims to
-show weather on the Mars based on the data from NASA open API [https://api.nasa.gov/](https://api.nasa.gov/).
+Mars Weather App was created as a school project at the Haaga-Helia University of Applied Sciences. The application aims to
+show the weather on the Mars based on the data from NASA open API [https://api.nasa.gov/](https://api.nasa.gov/).
 
-You can read data specification:
+You can read the data specification here: [https://api.nasa.gov/assets/insight/InSight%20Weather%20API%20Documentation.pdf](https://api.nasa.gov/assets/insight/InSight%20Weather%20API%20Documentation.pdf).
 
-[https://api.nasa.gov/assets/insight/InSight%20Weather%20API%20Documentation.pdf](https://api.nasa.gov/assets/insight/InSight%20Weather%20API%20Documentation.pdf)
-
-Application can be accessed on-line:
-
-[https://weather-mars.herokuapp.com/](https://weather-mars.herokuapp.com/).
+The application can be accessed on-line here: [https://weather-mars.herokuapp.com/](https://weather-mars.herokuapp.com/).
 
 ### Built With
 
@@ -51,7 +47,7 @@ Application can be accessed on-line:
 
 ![Main Page](public/images/screenshot_1.jpg)
 
-When the user opens the website, the data of the last sol is displayed. If there is no data for the
+When the user opens the website, the data of the last sol (Martian day) is displayed. If there is no data for the
 last sol (e.g. problems with sensors on Mars), dashes are displayed. 
 
 1) The user can choose any sol in the database. In this case the data is displayed for selected
@@ -85,7 +81,7 @@ Earth's calendar and see all available data for this period of time.
 
 ### 2. Browser support
 
-Mars-Weather App supports all major browsers. Version 1.0 of the application is only intended 
+Mars Weather App supports all major browsers. Version 1.0 of the application is only intended 
 for large screens (1350 x 1200 or more). 
 
 ### 3. Application main functionalities
@@ -101,7 +97,7 @@ Version 1.0 has the following functionalities:
 - statistics for temperature, pressure and wind 
 - displaying data for the chosen period
 
-### 4 Road Map 
+### 4. Road Map 
 
 Following functionalities are planned in the next version:
 
@@ -110,14 +106,14 @@ Following functionalities are planned in the next version:
 
 ## Licence
 
-Licensed under MIT Licence. [Read more](https://choosealicense.com/licenses/mit/)
+Licensed under [MIT Licence](https://choosealicense.com/licenses/mit/).
 
 ## Images used in the application 
 
 [Picture of Mars used as a logo](https://freesvg.org/mars-planet) lisensed under Creative Commons. 
 
-[Picture of Mars used as a background](https://pixabay.com/fi/photos/mars-planeetta-tilaa-ulkoavaruus-5564141/) is lisensed under Pixabay lisense. 
-[Read more](https://pixabay.com/fi/service/license/)
+[Picture of Mars used as a background](https://pixabay.com/fi/photos/mars-planeetta-tilaa-ulkoavaruus-5564141/) is lisensed under [Pixabay lisense](https://pixabay.com/fi/service/license/).
+
 ## Project participants
 
 - Heta Björklund
@@ -125,6 +121,3 @@ Licensed under MIT Licence. [Read more](https://choosealicense.com/licenses/mit/
 - Christian Lindell
 - Dmitry Sinyavskiy
 - Irina Tregub - [LinkedIn](https://www.linkedin.com/in/irinatregub/) - irinatregub@gmail.com
-
-
-
